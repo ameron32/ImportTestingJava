@@ -39,4 +39,20 @@ public class StringTools {
         }
         return genList;
     }
+    
+    public static int getInteger(String s) {
+        return ((s == "") ? 0 : Integer.parseInt(s));
+    }
+    
+    public static short getShort(String s) {
+        return (short)getInteger(s);
+    }
+    
+    public static short[] convertListStringToShort(List<String> los) {
+        short[] aShort = new short[los.size()];
+        for (int x = 0; x < los.size(); x++) {
+            aShort[x] = Short.decode(los.get(x));
+        }
+        return aShort;
+    }
 }

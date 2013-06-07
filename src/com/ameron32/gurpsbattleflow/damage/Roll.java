@@ -23,6 +23,11 @@ public class Roll {
     public short getBonus () {
         return roll[1];
     }
+    
+    public void changeRoll (int die, int bonus) {
+        roll[0] = (short) die;
+        roll[1] = (short) bonus;
+    }
 
     @Override
     public String toString() {

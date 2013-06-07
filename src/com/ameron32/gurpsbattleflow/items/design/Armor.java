@@ -1,7 +1,7 @@
 
 package com.ameron32.gurpsbattleflow.items.design;
 
-import java.util.List;
+import java.util.Arrays;
 
 import com.ameron32.gurpsbattleflow.StringTools;
 
@@ -9,7 +9,7 @@ public class Armor extends Item {
     private static final long serialVersionUID = 3592351610507935292L;
     
     String material;
-    List<String> covers;
+    String[] covers;
     short dr, don, holdout;
     // Addon[] addons;
     
@@ -29,14 +29,14 @@ public class Armor extends Item {
      * @param don
      * @param holdout
      */
-    public Armor(String name, int id, int cost, short tl, float weight, String specialNotes,
-            String description, String material, List<String> covers, short dr, short don, short holdout) {
+    public Armor(String name, int id, int cost, int tl, double weight, String specialNotes,
+            String description, String material, String[] covers, int dr, int don, int holdout) {
         super(name, id, cost, tl, weight, specialNotes, description);
         this.material = material;
         this.covers = covers;
-        this.dr = dr;
-        this.don = don;
-        this.holdout = holdout;
+        this.dr = (short)dr;
+        this.don = (short)don;
+        this.holdout = (short)holdout;
     }
 
 
@@ -55,7 +55,7 @@ public class Armor extends Item {
     }
     
     /**
-     * Reserved for importer
+     * Importer constructor
      * 
      * @param id
      * @param name
@@ -68,29 +68,51 @@ public class Armor extends Item {
      * @param don
      * @param holdout
      */
-    public Armor(int id, String name, String material, String covers, short tl, short dr, int cost, float weight, short don, short holdout) {
-        super(name, id, cost, tl, weight, "", "");
+    public Armor(int id, String name, String material, String covers, int tl, int dr,
+            int cost, double weight, int don, int holdout) {
+        super(name, id, cost, tl, weight, 
+                "", ""); // FIXME shouldn't be blank
+        this.covers = StringTools.genList(covers).toArray(new String[0]);
         this.material = material;
-        this.covers = StringTools.genList(covers);
-        this.dr = dr;
-        this.don = don;
-        this.holdout = holdout;
+        this.dr = (short) dr;
+        this.don = (short) don;
+        this.holdout = (short) holdout;
     }
 
-/*
- * SPECIAL CIRCUMSTANCES
- */
+    /*
+     * SPECIAL CIRCUMSTANCES
+     */
     short modCr, modImp, modCut;
-    boolean isFlexArmor, isCombustible, isSemiAblative, makesReducedDX, isRequiredForPlate, 
-        givesIgnoreBadTerrain, isDRUndersideOnly, givesHamFisted, givesBadGrip, givesStealth, 
-        removesSnowStealthModifier;
-    
-    public void setSpecialModifiers(int cr, int imp, int cut, boolean flex, boolean combust, boolean semiAblative, 
-            boolean reducedDX, boolean reqForPlate, boolean ignoreBadTerrain, boolean undersideDRonly, boolean hamFisted,
+    boolean isFlexArmor, isCombustible, isSemiAblative, makesReducedDX, isRequiredForPlate,
+            givesIgnoreBadTerrain, isDRUndersideOnly, givesHamFisted, givesBadGrip, givesStealth,
+            removesSnowStealthModifier;
+
+    /**
+     * Set special modifiers. Long version.
+     * 
+     * @param cr
+     * @param imp
+     * @param cut
+     * @param flex
+     * @param combust
+     * @param semiAblative
+     * @param reducedDX
+     * @param reqForPlate
+     * @param ignoreBadTerrain
+     * @param undersideDRonly
+     * @param hamFisted
+     * @param badGrip
+     * @param stealth
+     * @param snowStealthMod
+     */
+    public void setSpecialModifiers(int cr, int imp, int cut, boolean flex, boolean combust,
+            boolean semiAblative,
+            boolean reducedDX, boolean reqForPlate, boolean ignoreBadTerrain,
+            boolean undersideDRonly, boolean hamFisted,
             boolean badGrip, boolean stealth, boolean snowStealthMod) {
-        modCr = (short)cr;
-        modImp = (short)imp;
-        modCut = (short)cut;
+        modCr = (short) cr;
+        modImp = (short) imp;
+        modCut = (short) cut;
         isFlexArmor = flex;
         isCombustible = combust;
         isSemiAblative = semiAblative;
@@ -103,32 +125,33 @@ public class Armor extends Item {
         givesStealth = stealth;
         removesSnowStealthModifier = snowStealthMod;
     }
+
+    
     
     /*
      * GETTERS AND SETTERS
      */
-
-    public String getMaterial() {
-        return material;
-    }
-
-
-    public List<String> getCovers() {
-        return covers;
-    }
-
 
     public short getDr() {
         return dr;
     }
 
 
-    public short getDon() {
-        return don;
+    @Override
+    public String toString() {
+        return "Armor [material=" + material + ", covers=" + Arrays.toString(covers) + ", dr=" + dr
+                + ", don=" + don + ", holdout=" + holdout + ", modCr=" + modCr + ", modImp="
+                + modImp + ", modCut=" + modCut + ", isFlexArmor=" + isFlexArmor
+                + ", isCombustible=" + isCombustible + ", isSemiAblative=" + isSemiAblative
+                + ", makesReducedDX=" + makesReducedDX + ", isRequiredForPlate="
+                + isRequiredForPlate + ", givesIgnoreBadTerrain=" + givesIgnoreBadTerrain
+                + ", isDRUndersideOnly=" + isDRUndersideOnly + ", givesHamFisted=" + givesHamFisted
+                + ", givesBadGrip=" + givesBadGrip + ", givesStealth=" + givesStealth
+                + ", removesSnowStealthModifier=" + removesSnowStealthModifier + "]";
     }
-
-
-    public short getHoldout() {
-        return holdout;
-    }
+    
+    
+    
+    
+    
 }

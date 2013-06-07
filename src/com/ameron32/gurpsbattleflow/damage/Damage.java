@@ -59,4 +59,10 @@ public class Damage {
         return null;
     }
     
+    /*
+     * GETTERS AND SETTERS
+     */
+    public void setDamageRoll(Roll damage) {
+        this.damage = damage;
+    }
 }

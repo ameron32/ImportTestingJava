@@ -5,8 +5,12 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
 
+import com.ameron32.gurpsbattleflow.attackoptions.MeleeAttackOption;
 import com.ameron32.gurpsbattleflow.items.design.Armor;
+import com.ameron32.gurpsbattleflow.items.design.MeleeWeapon;
+import com.ameron32.gurpsbattleflow.items.design.Shield;
 
+@SuppressWarnings(value = {"rawtypes"}) 
 public class Importer {
     public enum ImportType {
         Advantage, Skill,
@@ -56,15 +60,15 @@ public class Importer {
                             break;
                             
                         case MeleeWeapon:
-                            
+                            readMeleeWeapon(appendToThisList, ver);
                             break;
                             
                         case Shield:
-                            
+                            readShield(appendToThisList, ver);
                             break;
                             
                         case MeleeWeaponOption:
-                            
+                            readMeleeWeaponOption(appendToThisList, ver);
                             break;
 
                         case FlowChart:
@@ -176,6 +180,27 @@ public class Importer {
         list.add(oneSkill);
     }
     
+    private void readShield(List list, int ver)
+            throws IOException, FileNotFoundException {
+
+        /*
+         * Import version 155
+         */
+        Shield oneShield = new Shield(
+                getInt("iId"),
+                getString("sType"),
+                getString("sMaterial"),
+                getString("sDescription"),
+                getInt("iDB"),
+                getInt("iDR"),
+                getInt("iHits"),
+                getDouble("iWeight"),
+                getInt("iCost"),
+                getString("sNotes")
+                );
+        list.add(oneShield);
+    }
+    
     private void readArmor(List list, int ver)
             throws IOException, FileNotFoundException {
         
@@ -184,12 +209,12 @@ public class Importer {
                 getString("sName"),
                 getString("sMaterial"),
                 getString("sCovers"),
-                (short)getInt("iTL"),
-                (short)getInt("iDR"),
+                getInt("iTL"),
+                getInt("iDR"),
                 getInt("iCost"),
-                (float)getDouble("fWeight"),
-                (short)getInt("iDon"),
-                (short)getInt("iHoldout"));
+                getDouble("fWeight"),
+                getInt("iDon"),
+                getInt("iHoldout"));
         oneArmor.setSpecialModifiers(        
                 getInt("iVsCr"),
                 getInt("iVsImp"),
@@ -210,6 +235,43 @@ public class Importer {
     
     }
 
+    private void readMeleeWeapon(List list, int ver) 
+            throws IOException, FileNotFoundException {
+        MeleeWeapon oneMeleeWeapon = new MeleeWeapon(
+                getString("sId"),
+                getString("sGroup"),
+                getString("sName"),
+                getInt("iNumberOfAttacks"),
+                getInt("iCalcCost"),
+                getDouble("fCalcWeight"),
+                getInt("iMinST"),
+                getBoolean("bThrowable"),
+                getBoolean("bCannotParry"),
+                getInt("iBreakageQuality"),
+                getDouble("fArmorDivisor"),
+                getString("sWeaponNotes")
+                );
+        list.add(oneMeleeWeapon);
+    }
+    
+    private void readMeleeWeaponOption(List list, int ver) 
+            throws IOException, FileNotFoundException {
+        MeleeAttackOption oneMWOption = new MeleeAttackOption(
+                getString("sWeaponId"),
+                getString("sGroup"),
+                getInt("iAttack"),
+                getString("sWeapon"), 
+                getString("sType"),
+                getString("sBaseDamage"),
+                getInt("iModifier"),
+                getString("sAmt"),
+                getString("liReach"),
+                getInt("iMinST"),
+                getString("sAttackNotes")
+                );
+        list.add(oneMWOption);
+    }
+    
     private String tmp;
 
     private boolean getBoolean(String s) throws IOException, FileNotFoundException {

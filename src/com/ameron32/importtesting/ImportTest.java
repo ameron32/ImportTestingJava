@@ -119,8 +119,14 @@ public class ImportTest {
     }
     */
     
+    static ImportTesting it;
     public static void main(String[] args) {
-        ImportTesting.main(null);
+        it = new ImportTesting(
+                new String[] {
+                        "C:\\Users\\klemeilleur\\Dropbox\\Public\\GURPS\\"
+                }
+                );
+        it.main();
         System.out.println(ImportTesting.getSB());
     }
 

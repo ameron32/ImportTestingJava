@@ -14,9 +14,11 @@ import com.ameron32.gurpsbattleflow.attackoptions.AttackOption;
 import com.ameron32.gurpsbattleflow.attackoptions.MeleeAttackOption;
 import com.ameron32.gurpsbattleflow.items.design.Item;
 import com.ameron32.gurpsbattleflow.items.design.Weapon;
+import com.ameron32.testing.ImportTesting;
 
 public class ImportTest {
 
+    /*
     static final List<Item> libraryArmor = new ArrayList<Item>();
     static final List<Item> libraryMeleeWeapon = new ArrayList<Item>();
     static final List<AttackOption> libraryMeleeWeaponOption = new ArrayList<AttackOption>();
@@ -114,6 +116,12 @@ public class ImportTest {
     
     public static void logClose() {
         out.close();
+    }
+    */
+    
+    public static void main(String[] args) {
+        ImportTesting.main(null);
+        System.out.println(ImportTesting.getSB());
     }
 
 }

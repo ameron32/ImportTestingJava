@@ -8,12 +8,12 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.ameron32.gurpsbattleflow.Importer;
-import com.ameron32.gurpsbattleflow.Importer.ImportType;
-import com.ameron32.gurpsbattleflow.attackoptions.AttackOption;
-import com.ameron32.gurpsbattleflow.attackoptions.MeleeAttackOption;
-import com.ameron32.gurpsbattleflow.items.design.Item;
-import com.ameron32.gurpsbattleflow.items.design.Weapon;
+import com.ameron32.libgurps.attackoptions.AttackOption;
+import com.ameron32.libgurps.attackoptions.MeleeAttackOption;
+import com.ameron32.libgurps.items.design.Item;
+import com.ameron32.libgurps.items.design.Weapon;
+import com.ameron32.libgurps.tools.Importer;
+import com.ameron32.libgurps.tools.Importer.ImportType;
 import com.ameron32.testing.ImportTesting;
 
 public class ImportTest {

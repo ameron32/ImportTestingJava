@@ -4,12 +4,12 @@ package com.ameron32.importtesting;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.ameron32.gurpsbattleflow.Advantage;
-import com.ameron32.gurpsbattleflow.Importer;
-import com.ameron32.gurpsbattleflow.Importer.ImportType;
-import com.ameron32.gurpsbattleflow.Skill;
-import com.ameron32.gurpsbattleflow.character.CharacterRecord;
-import com.ameron32.gurpsbattleflow.items.design.Item;
+import com.ameron32.libgurps.character.CharacterRecord;
+import com.ameron32.libgurps.character.stats.Advantage;
+import com.ameron32.libgurps.character.stats.Skill;
+import com.ameron32.libgurps.items.design.Item;
+import com.ameron32.libgurps.tools.Importer;
+import com.ameron32.libgurps.tools.Importer.ImportType;
 
 public class CharacterTester {
     static final List<Advantage> libraryAdv = new ArrayList<Advantage>();

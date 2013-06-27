@@ -11,7 +11,7 @@ public class ImportTest {
     public static void main(String[] args) {
         it = new ImportTesting(
                 new String[] {
-                        "C:\\Users\\klemeilleur\\Dropbox\\Public\\GURPS\\GURPSBuilder\\"
+                        "C:\\Users\\klemeilleur\\Dropbox\\Public\\GURPS\\GURPSBuilder\\156\\"
                 }
                 );
         it.main();

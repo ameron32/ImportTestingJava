@@ -7,14 +7,14 @@ import java.util.List;
 import com.ameron32.libgurps.character.CharacterRecord;
 import com.ameron32.libgurps.character.stats.Advantage;
 import com.ameron32.libgurps.character.stats.Skill;
-import com.ameron32.libgurps.items.design.Item;
+import com.ameron32.libgurps.items.library.LibraryItem;
 import com.ameron32.libgurps.tools.Importer;
 import com.ameron32.libgurps.tools.Importer.ImportType;
 
 public class CharacterTester {
     static final List<Advantage> libraryAdv = new ArrayList<Advantage>();
     static final List<Skill> librarySkill = new ArrayList<Skill>();
-    static final List<Item> libraryItem = new ArrayList<Item>();
+    static final List<LibraryItem> libraryItem = new ArrayList<LibraryItem>();
     static final String dirPath = "C:\\Users\\klemeilleur\\Dropbox\\Public\\GURPS\\";
     
     public static void importFromCSV() {

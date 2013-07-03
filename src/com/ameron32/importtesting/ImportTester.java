@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 import com.ameron32.testing.ImportTesting;
 
-public class ImportTest {
+public class ImportTester {
 
     static ImportTesting it;
     public static void main(String[] args) {

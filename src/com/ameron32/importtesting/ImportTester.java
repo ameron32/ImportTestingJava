@@ -11,7 +11,7 @@ public class ImportTester {
     public static void main(String[] args) {
         it = new ImportTesting(
                 new String[] {
-                        "C:\\Users\\klemeilleur\\Dropbox\\Public\\GURPS\\GURPSBuilder\\156\\"
+                        "C:\\Users\\klemeilleur\\Dropbox\\Public\\GURPS\\GURPSBuilder\\" + ImportTesting.getVERSION() + "\\"
                 }
                 );
         it.main();
